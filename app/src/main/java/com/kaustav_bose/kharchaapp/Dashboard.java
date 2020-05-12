@@ -124,8 +124,11 @@ public class Dashboard extends AppCompatActivity {
                 arrayList.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     DataModel dataModel = snapshot.getValue(DataModel.class);
-                    if(dataModel.getEmail().equals(firebaseUser.getEmail()))
-                        arrayList.add(dataModel);
+                    assert dataModel != null;
+                    if(dataModel.getEmail() !=null)
+
+                        if(dataModel.getEmail().equals(firebaseUser.getEmail()))
+                            arrayList.add(dataModel);
                 }
                 customAdapter2= new CustomAdapter2(Dashboard.this,arrayList);
                 listView.setAdapter(customAdapter2);
